@@ -1,0 +1,23 @@
+
+$ cat > var_files/vocab.json
+[[]]
+^Z
+$ python compute_vocab.py 
+input1.txt
+$ python compute_vocab.py 
+input2.txt
+$ python setup_tokenizer.py
+$ python compute_io.py 
+input1.txt
+$ python compute_io.py 
+input2.txt
+$ python batching.py
+input1.txt
+$ python batching.py
+input2.txt
+$ python setup_model.py
+
+### Change m = 32 according to the number of your batched io files in batch_train.py ###
+
+$ python batch_train.py
+$ python word_pred.py
