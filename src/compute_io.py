@@ -10,7 +10,7 @@ from keras.models import load_model
 
 
 
-fname = raw_input()
+fname = input()
 
 with open("../text_seq/text_sequences_4gram_" + fname + ".json") as seq_json:
     text_sequences_4gram = json.load(seq_json)

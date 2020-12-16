@@ -24,7 +24,6 @@ for name in fnames:
 	with open('../ngrams/4gram_' + name + '.json') as ng:
 	    ngrams = json.load(ng)
 
-
 	total += len(ngrams)
 	for elem in ngrams:
 
@@ -37,11 +36,4 @@ for name in fnames:
 
 	    res += (pred_word == elem[3])
 
-
-
 print("4-Gram Accuracy = {}".format( 1.0 * res / total))
-# ('Accuracy = ', 0.9941535332994408)
-
-
-
-

@@ -10,7 +10,7 @@ import scipy.stats as st
 
 #computes vocab (adds to it if already exists and creates text_sequences)
 
-fname = raw_input()
+fname = input()
 d = io.open('../training_text/' + fname, errors='ignore')
 data = d.readlines()
 
@@ -51,35 +51,6 @@ for text in data:
 ################# Tokenization and Section data ############
 ############################################################
 tokens = "\n".join(clean_data).split()
-
-# len tokens = 2155
-# Assume 5 sections involved
-
-# keys are indices in tokens list upto with the sections prevail
-# the index starts from the previous key value pair. 
-
-#section_data = {
-#    200:(1,),
-#    400:(1,),
-#    600:(1,),
-#    800:(1,),
-#    1000:(1,),
-#    1200:(1,),
-#    1400:(1,),
-#    1600:(1,),
-#    1800:(1,),
-#    2000:(1,),
-#    14000:(1,)
-#}
-
-#sections = list(set(section_data.values()))
-#section_ids = {}
-
-#for i, section in enumerate(sections):
-#    section_ids[section] = i
-# make sure that these numbers are the same in word-pred file as well
-# when re-run while importing at the top in word-pred
-# these numbers should not change
 
 
 ############################################################
@@ -135,11 +106,3 @@ for key in seq.keys():
     
 with open('../ngrams/4gram_'+ fname + '.json', 'w') as gr:
     json.dump(a, gr)
-
-
-
-
-
-
-
-

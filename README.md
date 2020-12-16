@@ -179,5 +179,9 @@ The user will have to modify compute_vocab for this feature. Also, input sequenc
 
 
 
+NOtes
+
+- Two input files generated using lipsum.com each of 2000 words and 12KB each. 
+
 
 

@@ -3,7 +3,7 @@ import numpy as np
 fname_i = '../raw_io_files/input_train_'
 fname_o = '../raw_io_files/input_target_'
 
-tname = raw_input()
+tname = input()
 file_counter = np.load('../var_files/batch_counter.npy')[0]
 
 
