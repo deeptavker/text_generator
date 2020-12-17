@@ -1,5 +1,4 @@
-### Word Prediction with LSTM-RNN using Keras + Tensorflow
-
+### Word Prediction with LSTM-RNN using Keras
 ---------------------------------
 How to use :
 
