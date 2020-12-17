@@ -50,7 +50,7 @@ Decomposed :
 - A B C -> D
 - B C D -> E
 - C D E -> F
-... you get the idea. 
+... and so on. 
 
 If windows size becomes 5, => Input -> 4 & Output -> 1
 
