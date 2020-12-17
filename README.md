@@ -3,7 +3,7 @@
 ---------------------------------
 How to use :
 
-Suppose we have two input files over which we wish to implement a next-word prediction algorithm. Arrange the files as given in the repository and run the commands as shown in [howto.txt](https://github.com/deeptavker/Word_Prediction_RNN/blob/master/howto.txt). Note that we can have any arbitary number of files. 
+Suppose we have two input files over which we wish to implement a next-word prediction algorithm. Arrange the files as given in the repository and run the commands as shown in [howto.txt](https://github.com/deeptavker/ME781-Course-Project/blob/master/howto.txt). Note that we can have any arbitary number of files. 
 
 ```sh
  Enter input text
@@ -26,10 +26,8 @@ _______
 ### Problem statement
 
 1. Given a set of text files, develop and implement an ML algorithm which works as a predictive keyboard. Given a series of words, predict the next word based on the input text files. 
-2. In addition to normal one word prediction, assume that the text files have **tagged** sentences which is often found in legal documents, for example, a paragraph which contains specific arguments related to some specific section of the *law* would be tagged according to the label for that *law* such as *1A*. While prediction, the user can input such specific section and the next word prediction algorithm should modify the output according to the new probability distribution. 
-3. We also want the feature of continuous learning which enables the algorithm to continually learn new words as the user interacts with the application. 
-4. Implement a reliable accuracy testing metric which can be used to evaluate and optimise the performance of the algorithm  and can also be used as a benchmark while marketing the application to consumers. 
-5. Implement batch processing which ensures that irrespective of the combined size of input files, the computer memory is able to process the data without facing a memory overload. 
+2. Implement a reliable accuracy testing metric which can be used to evaluate and optimise the performance of the algorithm  and can also be used as a benchmark while marketing the application to consumers. 
+3. Implement batch processing which ensures that irrespective of the combined size of input files, the computer memory is able to process the data without facing a memory overload. 
 
 ### Solution Approach
 
@@ -41,7 +39,7 @@ _______
 
 ### Solution Algorithm
 
-#### 1.1 Making the data trainable 
+#### Making the data trainable 
 
 The basic idea is to virtually collate all the input data and decompose it into word strings of a fixed length using a sliding window technique. Suppose we use a windows size of 4. Let us represent the words as capital letters - A,B,C...
 
@@ -75,7 +73,7 @@ Consider the following tokenization
 The output for sequence A B C -> D ; being the word *D* will be represented as the vector <0 0 0 1 0 0 0 0> 
 This makes it easier for the neural network to predict the stuff we want to predict. It is also essential when we use a *softmax* layer in the neural network for the output. 
 
-#### 1.2 The Neural Network
+#### The Neural Network
 
 Having the data ready to be trained, we supply it to a neural network with a number of LSTM, Dense and Softmax layers. It takes quite some time to train the data for text files of size > 1MB. 
 
@@ -102,7 +100,7 @@ Non-trainable params: 0
 _________________________________________________________________
 ```
 
-#### 1.3 N-Gram Accuracy
+#### N-Gram Accuracy
 
 We generate N-Grams for accuracy testing. We run predictions on the first part splitted N-Grams data and compare it to the last word in that N-Gram. Using plain averaging, we calculate the correctness of predictions over a large number of such N-Grams. 
 
@@ -111,7 +109,7 @@ In this code, I used 4-grams. Here's the accuray metric calculated over both inp
 `4-Gram Accuracy = 0.991214470284`
 
 
-#### 1.5 Batch Processing
+#### Batch Processing
 
 We use what are called data generator functions in order to make sure there are no memory overflows. The data generator functions makes sure to collect data from the hard memory, process it and then delete it from RAM and move on to the next chunk of data. This limits the maximum memory usage independent of the combined size of input files. 
 
@@ -147,7 +145,7 @@ class Data_Generator(Sequence) :
 
 
 
-NOtes
+### Notes
 
 - Two input files generated using lipsum.com each of 2000 words and 12KB each. 
 
