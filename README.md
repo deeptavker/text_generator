@@ -31,10 +31,8 @@ _______
 ### Solution Approach
 
 1. We use an LSTM based Recurrent Neural Network for tackling this problem. 
-2. We pad the training data by the section for each input instance for modified learning. And the same tag can be used while prediction. 
-3. Implement Elastic Weight Consolidation technique developed by DeepMind.AI
-4. We use N-Gram accuracy as a metric for testing. 
-5. We use data generators provided by the **Keras** library for ensuring memory problems don't occur. 
+2. We use N-Gram accuracy as a metric for testing. 
+3. We use data generators provided by the **Keras** library for ensuring memory problems don't occur. 
 
 ### Solution Algorithm
 
