@@ -8,7 +8,7 @@ import nltk
 from nltk.util import ngrams
 import scipy.stats as st
 
-#computes vocab (adds to it if already exists and creates text_sequences)
+# computes vocab (adds to it if already exists and creates text_sequences)
 
 fname = input()
 d = io.open('../training_text/' + fname, errors='ignore')
@@ -18,8 +18,10 @@ data = d.readlines()
 ################# Cleaning the text ########################
 ############################################################
 # Method that will clean the data:
+
+
 def clean_text(text):
-    text = text.lower() #convert all the chracters into small letters
+    text = text.lower()  # convert all the chracters into small letters
     text = re.sub(r"i'm", "i am", text)
     text = re.sub(r"he's", "he is", text)
     text = re.sub(r"she's", "she is", text)
@@ -39,10 +41,11 @@ def clean_text(text):
     text = text.replace("]", "")
     return text
 
+
 clean_data = []
 for text in data:
     a = re.sub(r'[^a-zA-z ]+', '', text).strip()
-    if len(a)>0:
+    if len(a) > 0:
         clean_data.append(clean_text(a))
     else:
         None
@@ -56,14 +59,14 @@ tokens = "\n".join(clean_data).split()
 ############################################################
 ####### Structuring sequence wise data for processing ######
 ############################################################
-train_len = 3+1 # 1 for output  
+train_len = 3 + 1  # 1 for output
 text_sequences = []
 for i in range(train_len, len(tokens)):
     seq = tokens[i - train_len:i]
     text_sequences.append(seq)
-    
-with open('../text_seq/text_sequences_4gram_' + fname + '.json','w') as fp:
-    json.dump(text_sequences,fp)
+
+with open('../text_seq/text_sequences_4gram_' + fname + '.json', 'w') as fp:
+    json.dump(text_sequences, fp)
 
 
 ############################################################
@@ -71,7 +74,6 @@ with open('../text_seq/text_sequences_4gram_' + fname + '.json','w') as fp:
 ############################################################
 
 
-    
 res = list(set(tokens))
 
 with open("../var_files/vocab.json") as vocab:
@@ -84,12 +86,12 @@ with open("../var_files/vocab.json") as vocab:
         res.extend(res_t)
         res = list(set(res))
         a = [res]
-        
+
 with open("../var_files/vocab.json", 'w') as vocab:
     json.dump(a, vocab)
 
 
-### N grams generator
+# N grams generator
 
 ngram_tokenize = nltk.word_tokenize(' '.join(tokens))
 
@@ -103,6 +105,6 @@ for elem in fourgrams:
 a = []
 for key in seq.keys():
     a.append(list(key) + [st.mode(seq[key])[0][0]])
-    
-with open('../ngrams/4gram_'+ fname + '.json', 'w') as gr:
+
+with open('../ngrams/4gram_' + fname + '.json', 'w') as gr:
     json.dump(a, gr)

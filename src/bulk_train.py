@@ -12,7 +12,7 @@ model = keras.models.load_model('../var_files/word_pred_Model4.hdf5')
 inps = np.load('../raw_io_files/input_train_sample5.txt.npy')
 outps = np.load('../raw_io_files/input_target_sample5.txt.npy')
 
-model.fit(x = inps, y = outps, batch_size = 128, epochs = 400, verbose=1)
+model.fit(x=inps, y=outps, batch_size=128, epochs=400, verbose=1)
 
 model.save('../var_files/temp_word_pred_Model4.hdf5')
 
