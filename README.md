@@ -141,6 +141,18 @@ class Data_Generator(Sequence) :
 ![Flowchart](/pics/flowchart.png)
 
 
+### Model Training and Report
+
+#### Python code styling and codebase information
+
+- We have conformed to the PEP8 style guide conventions for our entire code base. Our code is also modularized into various utility based python scripts which can be individually modified for future customizations. 
+
+- For memory stress testing, we used a 25MB text data file for training and used a memory profiling tool to see how much RAM is consumed while running the python program for each normal processing and batch processing. The batch processing algorithm automatically breaks it down into a specified size for the input-output process. We got good results for comparison. Bulk processing used around a maximum of 3GB of RAM whereas batch processing used around 350MB of RAM.  Also, for normal processing the RAM consumption increases with File Size whereas for batch processing it depends on the batch-size. For this case we used a batch size of 512. It was observed that batch processing is almost 10 times more memory efficient. Following two figures are for bulk and batch training memory consumption reports respectively. 
+
+- Pics for memory analysis
+
+- Training Log plots and details
+
 
 
 
